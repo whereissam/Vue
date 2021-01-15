@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
+    
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="write something..." v-model='message'>
+        <button @click='create'>Create</button>
+        <div>{{message}}</div>
+        <ul>
+            <li v-for='(city,index) in citiesname'>
+                {{city.firstName}}
+                <button @click='Update'>UPDATE</button>
+                <button @click='Delete'>DELETE</button>
+            </li>
+            
+        </ul>
+      </div>
+      <script src="app.js"></script>
+</body>
+</html>
