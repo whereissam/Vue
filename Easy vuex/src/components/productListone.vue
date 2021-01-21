@@ -2,11 +2,12 @@
   <div id="product-list-one">
       <h2>Product List One</h2>
       <ul>
-          <li v-for="product in products" :key='product.name'>
+          <li v-for="product in saleProduct" :key='product.name'>
             <span class="name">{{product.name}}</span>
             <span class="price">{{product.price}}</span>
           </li>
       </ul>
+      <button @click="reducedprice">Reduce Price</button>
   </div>
 </template>
 
@@ -15,6 +16,14 @@ export default {
   computed:{
     products(){
       return this.$store.state.products;
+    },
+     saleProduct(){
+     return this.$store.getters.saleProduct //getters is to get data in state
+    }
+  },
+  methods:{
+    reducedprice: function(){
+      this.$store.commit('reducePrice') //get mutation request 
     }
   }
 }

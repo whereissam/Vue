@@ -2,8 +2,12 @@
   <div id="product-list-two">
       <h2>Product List Two</h2>
       <ul>
-          <li v-for="product in products" :key='product.name'>{{product.price}}</li>
+          <li v-for="product in saleProduct" :key='product.name'>
+            <span class="name">{{product.name}} </span>
+            <span class="price">${{product.price}} </span>
+            </li>
       </ul>
+      <button @click="reducedprice">Reduce Price</button>
   </div>
 </template>
 
@@ -12,9 +16,20 @@ export default {
    computed:{
     products(){
       return this.$store.state.products;
+    },
+    saleProduct(){
+     return this.$store.getters.saleProduct
     }
-  }
+  },
+   methods:{
+    reducedprice: function(){ //will cause error bcz directly mutate data 
+        this.$store.state.products.forEach(product =>{
+                product.price -= 1;
+            }) 
+        }
+    }
 }
+
 </script>
 
 <style scoped>
